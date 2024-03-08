@@ -29,11 +29,13 @@ public class PhoneBookTest extends BaseTest {
         Allure.step("Click by Reg button");
         String expectedString = "Wrong";
 
-        Alert alert= loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
+        Alert alert = loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
         boolean isAlertHandled = AlertHandler.handleAlert(alert, expectedString);
         Assert.assertTrue(isAlertHandled);
 
     }
+
+    
     @Test
     @Description("User already exist. Login and add contact.")
     public void loginOfAnExistingUserAddContact() throws InterruptedException {
@@ -41,11 +43,11 @@ public class PhoneBookTest extends BaseTest {
         MainPage mainPage = new MainPage(getDriver());
         Allure.step("Step 1");
         LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
-
-        lpage.fillEmailField(PropertiesReader.getPropery("existingUserEmail"))
-                .fillPasswordField(PropertiesReader.getPropery("existingUserPassword"))
+        Allure.step("Step 2");
+        lpage.fillEmailField(PropertiesReader.getProperty("existingUserEmail"))
+                .fillPasswordField(PropertiesReader.getProperty("existingUserPassword"))
                 .clickByLoginButton();
-
+        Allure.step("Step 3");
         MainPage.openTopMenu(TopMenuItem.ADD.toString());
         AddPage addPage = new AddPage(getDriver());
         Contact newContact = new Contact(NameAndLastNameGenerator.generateName(),
@@ -58,7 +60,7 @@ public class PhoneBookTest extends BaseTest {
         addPage.fillFormAndSave(newContact);
         ContactsPage contactsPage = new ContactsPage(getDriver());
         Assert.assertTrue(contactsPage.getDataFromContactList(newContact));
-        TakeScreen.takeScreenshot("screenchot");
+        TakeScreen.takeScreenshot("screen");
         Thread.sleep(3000);
 
     }
