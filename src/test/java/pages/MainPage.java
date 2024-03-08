@@ -35,7 +35,8 @@ public class MainPage extends BasePage{
                 return (T) new AboutPage(driver);// тоже , что и с new HomePage(driver)
             case "LOGIN":
                 return (T) new LoginPage(driver);// тоже , что и с new HomePage(driver)
-
+            case "ADD" :
+                return (T) new AddPage(driver);
             default: throw new IllegalArgumentException("Somethings wrong"+ topMenuItem);
         }
 
