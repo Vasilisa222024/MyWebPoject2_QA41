@@ -10,6 +10,9 @@ public class Contact {
     private String address;
     private String description;
 
+   // public Contact(String john, String doe, String mail, String number, String des) {
+   // }
+
     public String getName() {
         return name;
     }
@@ -67,7 +70,7 @@ public class Contact {
         this.description = description;
     }
 
-    public Contact() {
+    public Contact(String еva, String ava, String mail, String number, String des) {
     }
 
     @Override

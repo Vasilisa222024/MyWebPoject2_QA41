@@ -2,7 +2,7 @@ package helpers;
 
 import java.util.Random;
 
-public class PhoneNumbeeGenerator {
+public class PhoneNumberGenerator {
     /*  public static void main(String[] args) {
        System.out.println("NUMBER : "+generatePhoneNumber());
    }*/
