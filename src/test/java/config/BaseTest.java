@@ -62,18 +62,18 @@ public class BaseTest { // Эта строка объявляет начало �
             // options.addArguments("-headless");
             driverThreadLocal.set(new FirefoxDriver(options));
         }
-        else if (browser.equalsIgnoreCase("safari")) {
-            SafariOptions options = new SafariOptions();
-            options.setCapability("language", "en");
-            driverThreadLocal.set(new SafariDriver());
-        } else if (browser.equalsIgnoreCase("edge")) {
-            // Настройки для Edge
-            WebDriverManager.edgedriver().setup();
-            EdgeOptions options = new EdgeOptions();
-            options.setCapability("language", "en");
-            //options.addArguments("--headless");
-            driverThreadLocal.set(new EdgeDriver(options));
-        }
+//        else if (browser.equalsIgnoreCase("safari")) {
+//            SafariOptions options = new SafariOptions();
+//            options.setCapability("language", "en");
+//            driverThreadLocal.set(new SafariDriver());
+//        } else if (browser.equalsIgnoreCase("edge")) {
+//            // Настройки для Edge
+//            WebDriverManager.edgedriver().setup();
+//            EdgeOptions options = new EdgeOptions();
+//            options.setCapability("language", "en");
+//            //options.addArguments("--headless");
+//            driverThreadLocal.set(new EdgeDriver(options));
+//        }
         else {throw new IllegalArgumentException("Invalid browser "+browser); }
 
         // Этот блок кода получает веб-драйвер с помощью метода getDriver(), максимизирует окно браузера,
@@ -83,7 +83,8 @@ public class BaseTest { // Эта строка объявляет начало �
         driver.manage().timeouts().pageLoadTimeout(Duration.ofMillis(20000) ); // Здесь устанавливается время ожидания для загрузки страницы. Если страница не загружается в течение указанного времени
         // (в данном случае, 20 секунд), будет сгенерировано исключение.
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000) );
-        BasePage.setDriver(driver); // Этот вызов используется для установки экземпляра драйвера в базовом классе страницы. это полезно т.к. есть базовый класс для всех ваших страниц, который управляет инициализацией драйвера.
+        BasePage.setDriver(driver); // Этот вызов используется для установки экземпляра драйвера в базовом классе страницы. это полезно
+        // т.к. есть базовый класс для всех ваших страниц, который управляет инициализацией драйвера.
     }
 
     @AfterMethod
